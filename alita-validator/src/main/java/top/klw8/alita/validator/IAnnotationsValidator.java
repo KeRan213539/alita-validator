@@ -10,6 +10,6 @@ import java.lang.annotation.Annotation;
  */
 public interface IAnnotationsValidator {
 
-    public void doValidator(Object object, Annotation annotation) throws Exception;
+    public void doValidator(Object object, Annotation annotation) throws ValidatorException;
     
 }

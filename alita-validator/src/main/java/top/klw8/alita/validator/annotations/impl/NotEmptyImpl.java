@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import top.klw8.alita.validator.IAnnotationsValidator;
+import top.klw8.alita.validator.ValidatorException;
 import top.klw8.alita.validator.ValidatorImpl;
 import top.klw8.alita.validator.annotations.NotEmpty;
 import top.klw8.alita.validator.utils.ValidatorUtil;
@@ -22,7 +23,7 @@ import top.klw8.alita.validator.utils.ValidatorUtil;
 public class NotEmptyImpl implements IAnnotationsValidator {
 
     @Override
-    public void doValidator(Object object, Annotation annotation) throws Exception {
+    public void doValidator(Object object, Annotation annotation) throws ValidatorException {
 	NotEmpty notEmpty = (NotEmpty) annotation;
 	String statusCode = notEmpty.responseStatusCode();
 	String message = notEmpty.validatFailMessage();

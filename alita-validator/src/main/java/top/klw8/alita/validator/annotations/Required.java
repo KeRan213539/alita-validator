@@ -19,7 +19,7 @@ import top.klw8.alita.validator.ThisIsValidator;
  * @date 2018年9月17日 13:08:48
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
 @Inherited  // 子类可以继承父类的注解
 @ThisIsValidator
@@ -41,6 +41,6 @@ public @interface Required {
      * @return
      */
     @AliasFor("value")
-    String validatFailMessage();
+    String validatFailMessage() default "";
     
 }

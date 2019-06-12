@@ -9,6 +9,6 @@ package top.klw8.alita.validator;
  */
 public interface IResponseMsgGenerator {
 
-    public Object generatorResponse(String code, String message);
+    Object generatorResponse(String code, String message, ValidatorException ex);
     
 }

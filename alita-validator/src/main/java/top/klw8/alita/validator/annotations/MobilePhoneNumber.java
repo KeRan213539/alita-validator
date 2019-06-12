@@ -19,7 +19,7 @@ import top.klw8.alita.validator.ThisIsValidator;
  * @date 2018-11-22 16:54:26
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
 @Inherited  // 子类可以继承父类的注解
 @ThisIsValidator

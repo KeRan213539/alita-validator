@@ -23,7 +23,7 @@ import top.klw8.alita.validator.utils.ValidateUtil;
 public class NumberRangeImpl implements IAnnotationsValidator {
 
     @Override
-    public void doValidator(Object object, Annotation annotation) throws Exception {
+    public void doValidator(Object object, Annotation annotation) throws ValidatorException {
 	if(object == null) {
 	    // 不为null才验证
 	    return;

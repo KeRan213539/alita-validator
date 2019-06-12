@@ -18,7 +18,7 @@ import top.klw8.alita.validator.ThisIsValidator;
  * @date 2019年1月26日 下午12:34:44
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
 @Inherited  // 子类可以继承父类的注解
 @ThisIsValidator
@@ -40,7 +40,7 @@ public @interface FloatRange {
      * @return
      */
     @AliasFor("value")
-    String validatFailMessage();
+    String validatFailMessage() default "";
     
     float min();
     
