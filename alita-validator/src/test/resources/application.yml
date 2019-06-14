@@ -1,0 +1,4 @@
+alita:
+  validator:
+    custom:
+      packages: top.klw8.alita.validator.custom.custom1,top.klw8.alita.validator.custom.custom2

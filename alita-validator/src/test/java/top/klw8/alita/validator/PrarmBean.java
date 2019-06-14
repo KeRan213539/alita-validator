@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import top.klw8.alita.validator.annotations.NotEmpty;
 import top.klw8.alita.validator.annotations.Required;
+import top.klw8.alita.validator.custom.custom1.Custom1;
+import top.klw8.alita.validator.custom.custom2.Custom2;
 
 /**
  * @author klw
@@ -15,10 +17,12 @@ import top.klw8.alita.validator.annotations.Required;
 @Setter
 public class PrarmBean {
 
+    @Custom1
     private String str1;
 
     @Required("参数2必须有值")
     @NotEmpty("参数2不能为空字符串")
+    @Custom2
     private String str2;
 
     public PrarmBean(String str1, String str2){

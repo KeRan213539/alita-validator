@@ -4,6 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import org.springframework.context.annotation.Import;
+import top.klw8.alita.validator.cfg.EnableValidatorSelector;
 
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Documented;
