@@ -10,16 +10,15 @@
 ## 主要功能
 
 * 基于Spring Boot 2.x
-
 * **验证JAVA方法的参数是否符合要求**：验证器是基于注解的,可用于验证任何的JAVA方法的参数
 * **自定义错误码**：使用注解的时候可以自定义验证失败时的错误码
 * **自定义错误消息**: 使用注解的时候可以自定义验证失败的消息,该消息为一个字符串,如果做国际化,可以在错误消息中放入国际化资源标识,在responseMsgGenerator 处理该资源标识
 * **返回类型自定**：通过实现错误响应接口,可以实现验证失败被调用的方法返回的内容自定,而不是抛出异常. 例如WEB项目中可以返回一个项目定义的Response格式的对象.
 * **各种验证方式**：目前提供少量的验证器,如必传,非空,密码(复杂度,长度等),手机号格式等.后面会慢慢增加更多的验证器,当然大家也可以提PR
+* **方法参数使用验证器(0.2新增)**: 现在可以在方法参数上使用验证器,并且如果该参数是个Java Bean, 并且属性中使用了验证器也会进行验证
+* **自定义验证器扩展(0.2新增)**: 通过在配制项"alita.validator.custom.packages" 配制自定义的验证器实现的包路径,可扫描自定义的验证器.多个包路径逗号分隔
 
 ## 未来规划
-
-* 目前验证只支持方法的参数是Java Bean,并且对象属性中需要定义验证器. 暂不支持参数为基础数据类型,Map,List等的验证,后面会支持
 
 * 根据自用发现的需求增加功能
 
@@ -33,7 +32,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
 </dependency>
 ```
 
@@ -76,11 +75,11 @@ private String fullName;
 
 
 ## 开发验证器
-验证器注解可以在使用的项目中单独开发,包名相同就行,当然也欢迎各种PR~
+验证器注解可以在使用的项目中单独开发,通过配置项"alita.validator.custom.packages" 指定验证器实现所在包就行,多个包路径用逗号分隔,验证器注解在哪个包无所谓.当然也欢迎各种PR~(如果要PR,则验证器注解必须放在 "top.klw8.alita.validator.annotations"包下,实现必须放在"top.klw8.alita.validator.annotations.impl"包下)
 
 **定义验证器注解**
 
-验证器注解放入 top.klw8.alita.validator.annotations 中
+验证器注解可以放在任意包中
 
 例如开发一个非空验证器(当值不为null的时候判断是否空,为null不处理):
 
@@ -119,7 +118,7 @@ public @interface NotEmpty {
 
  **开发验证器实现类**
 
-验证器实现放入 top.klw8.alita.validator.annotations.impl 中
+验证器实现可以放在任意包中,然后在配制中指定包路径
 
 需要实现  top.klw8.alita.validator.IAnnotationsValidator 接口
 
