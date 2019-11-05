@@ -3,7 +3,6 @@ package top.klw8.alita.validator;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -95,6 +94,11 @@ public class ValidatorAOP {
                         return rt;
                     }
                     if(arg != null) {
+                        // 把类注解拿出来看看有没有类级验证器,有就处理
+                        Object rt3 = checkAnnotationAndDoValidat(arg.getClass().getAnnotations(), arg);
+                        if (rt3 != null) {
+                            return rt3;
+                        }
                         List<Field> allFields = getAllFields(null, arg.getClass()); // 获取所有字段
                         for (Field field : allFields) {
                             field.setAccessible(true);
@@ -130,7 +134,7 @@ public class ValidatorAOP {
      */
     private Object checkAnnotationAndDoValidat(Annotation[] annotations, Object fieldValue){
         if (annotations != null && annotations.length > 0) {
-            // 遍历该字段的注解,找到验证器的注解
+            // 遍历注解,找到验证器的注解
             for (Annotation fieldAnn : annotations) {
                 // 检查该注解是否有@ThisIsValidator,有就说明是验证器
                 if (fieldAnn.annotationType().getAnnotation(ThisIsValidator.class) != null) {
@@ -180,7 +184,7 @@ public class ValidatorAOP {
             return fieldList;
         }
         if (fieldList == null) {
-            fieldList = new ArrayList<Field>(Arrays.asList(classz.getDeclaredFields()));  // 获得该类的所有字段,但不包括父类的
+            fieldList = new ArrayList<>(Arrays.asList(classz.getDeclaredFields()));  // 获得该类的所有字段,但不包括父类的
             /**
              * 巨坑巨坑!!!
              * Arrays.asList() 返回的是 Arrays的内部类ArrayList， 而不是java.util.ArrayList。

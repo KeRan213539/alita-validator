@@ -107,7 +107,7 @@ public @interface NotEmpty {
      * @return
      */
     @AliasFor("value")
-    String validatFailMessage();
+    String validatFailMessage() default "";
     
     
     // 更多参数...

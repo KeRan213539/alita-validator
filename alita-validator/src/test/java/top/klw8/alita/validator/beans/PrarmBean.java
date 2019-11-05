@@ -1,4 +1,4 @@
-package top.klw8.alita.validator;
+package top.klw8.alita.validator.beans;
 
 import lombok.Getter;
 import lombok.Setter;

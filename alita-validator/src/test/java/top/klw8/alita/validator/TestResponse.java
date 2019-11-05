@@ -9,6 +9,7 @@ package top.klw8.alita.validator;
 public class TestResponse implements IResponseMsgGenerator {
     @Override
     public Object generatorResponse(String code, String message, ValidatorException ex) {
-        throw ex;
+//        throw ex;
+        return "【" + code + "】" + message;
     }
 }
