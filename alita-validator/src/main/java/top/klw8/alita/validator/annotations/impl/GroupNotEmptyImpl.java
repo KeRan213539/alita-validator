@@ -1,5 +1,6 @@
 package top.klw8.alita.validator.annotations.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.util.ObjectUtils;
@@ -11,12 +12,10 @@ import top.klw8.alita.validator.annotations.GroupItem;
 import top.klw8.alita.validator.annotations.GroupNotEmpty;
 import top.klw8.alita.validator.annotations.GroupNotEmptys;
 import top.klw8.alita.validator.utils.GroupUtil;
-import top.klw8.alita.validator.utils.ValidatorUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +26,7 @@ import java.util.Map;
  * @date 2019/11/5 14:47
  */
 @ValidatorImpl(validator = {GroupNotEmptys.class})
+@Slf4j
 public class GroupNotEmptyImpl implements IAnnotationsValidator {
     @Override
     public void doValidator(Object object, Annotation annotation) throws ValidatorException {
@@ -53,7 +53,8 @@ public class GroupNotEmptyImpl implements IAnnotationsValidator {
                                     ++okCount;
                                 }
                             } catch (IllegalAccessException e) {
-                                e.printStackTrace();
+                                log.error("反射获取字段值出错", e);
+                                throw new ValidatorException(statusCode, "反射获取字段值出错");
                             }
                         }
                     }

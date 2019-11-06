@@ -31,6 +31,9 @@ public class AlitaValidatorTestApplication {
         list.add("abc");
         testBean.setList1(list);
         testBean.setStr2("456");
+        testBean.setPwd("$134qsE");
+        testBean.setPwd1("$134qwe");
+        testBean.setPwd2("$134qwe");
         System.out.println(tv.testValidator2(testBean));
     }
 

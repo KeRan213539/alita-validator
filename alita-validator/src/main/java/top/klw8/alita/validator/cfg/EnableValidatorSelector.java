@@ -20,6 +20,7 @@ import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import top.klw8.alita.validator.EnableValidator;
 import top.klw8.alita.validator.ValidatorAOP;
+import top.klw8.alita.validator.ValidatorImpl;
 
 
 /**
@@ -71,6 +72,24 @@ public class EnableValidatorSelector implements ImportSelector, ResourceLoaderAw
         }
 
         if(validatorImports != null && validatorImports.length > 0) {
+            // 找出 validatorImports 中有 @ValidatorImpl 注解的类,只导入这些类
+            List<String> realValidatorList = new ArrayList<>(validatorImports.length);
+            for(String className : validatorImports){
+                if(StringUtils.isBlank(className)){
+                    continue;
+                }
+                try {
+                    Class<?> classz = Class.forName(className);
+                    if(classz.isAnnotationPresent(ValidatorImpl.class)){
+                        realValidatorList.add(className);
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            validatorImports = new String[realValidatorList.size()];
+            realValidatorList.toArray(validatorImports);
+
             String[] allImports = new String[otherImports.length + validatorImports.length];
             System.arraycopy(otherImports, 0, allImports, 0, otherImports.length);
             System.arraycopy(validatorImports, 0, allImports, otherImports.length, validatorImports.length);
