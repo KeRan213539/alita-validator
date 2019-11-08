@@ -19,6 +19,7 @@ import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import top.klw8.alita.validator.EnableValidator;
+import top.klw8.alita.validator.IAnnotationsValidator;
 import top.klw8.alita.validator.ValidatorAOP;
 import top.klw8.alita.validator.ValidatorImpl;
 
@@ -81,7 +82,13 @@ public class EnableValidatorSelector implements ImportSelector, ResourceLoaderAw
                 try {
                     Class<?> classz = Class.forName(className);
                     if(classz.isAnnotationPresent(ValidatorImpl.class)){
-                        realValidatorList.add(className);
+                        if(IAnnotationsValidator.class.isAssignableFrom(classz)) {
+                            realValidatorList.add(className);
+                        } else {
+                            System.out.println("【警告】" + classz.getName() + "使用 @ValidatorImpl 标记为了一个验" +
+                                    "证器实现,但是没有实现接口 " + IAnnotationsValidator.class.getName()
+                                    + ",将被忽略. 如果使用了该实现对应的注解,会出现异常");
+                        }
                     }
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
