@@ -27,4 +27,9 @@ public class TestValidator {
         return "OK";
     }
 
+    @UseValidator
+    public String testValidator3(@Required("参数不能为空") PrarmBean prarmBean) {
+        return "OK";
+    }
+
 }

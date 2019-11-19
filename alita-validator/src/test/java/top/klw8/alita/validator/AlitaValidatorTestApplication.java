@@ -4,8 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
+import top.klw8.alita.validator.beans.PrarmBean;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,19 +27,16 @@ public class AlitaValidatorTestApplication {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(AlitaValidatorTestApplication.class, args);
         TestValidator tv = applicationContext.getBean(TestValidator.class);
 
-//        System.out.println(tv.testValidator1(new PrarmBean(null, "111"), 1, 2));
+        PrarmBean testBean = new PrarmBean();
+        testBean.setStr2("2222");
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DATE,-1);
+        testBean.setDate(calendar.getTime());
+        testBean.setLocalDate(LocalDate.now().plusDays(2));
+        testBean.setLocalDateTime(LocalDateTime.now().plusDays(1));
 
-
-        GroupNotEmptyTestBean testBean = new GroupNotEmptyTestBean();
-        testBean.setStr1("123");
-        List<String> list = new ArrayList<>(1);
-        list.add("abc");
-        testBean.setList1(list);
-        testBean.setStr2("456");
-        testBean.setPwd("$134qsE");
-        testBean.setPwd1("$134qwe");
-        testBean.setPwd2("$134qwe");
-        System.out.println(tv.testValidator2(testBean));
+        System.out.println(tv.testValidator3(testBean));
     }
 
 
