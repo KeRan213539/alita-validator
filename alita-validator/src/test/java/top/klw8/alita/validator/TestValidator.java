@@ -5,6 +5,7 @@ import top.klw8.alita.validator.annotations.IntegerRange;
 import top.klw8.alita.validator.annotations.Required;
 import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
 import top.klw8.alita.validator.beans.PrarmBean;
+import top.klw8.alita.validator.beans.PrarmTrimBean;
 
 /**
  * @author klw
@@ -29,6 +30,11 @@ public class TestValidator {
 
     @UseValidator
     public String testValidator3(@Required("参数不能为空") PrarmBean prarmBean) {
+        return "OK";
+    }
+
+    @UseValidator
+    public String testValidatorTrim(@Required("参数不能为空") PrarmTrimBean prarmTrimBean) {
         return "OK";
     }
 

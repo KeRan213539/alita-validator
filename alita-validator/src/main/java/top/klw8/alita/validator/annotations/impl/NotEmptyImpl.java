@@ -24,10 +24,10 @@ public class NotEmptyImpl implements IAnnotationsValidator {
 
     @Override
     public void doValidator(Object object, Annotation annotation) throws ValidatorException {
-        NotEmpty notEmpty = (NotEmpty) annotation;
-        String statusCode = notEmpty.responseStatusCode();
-        String message = notEmpty.validatFailMessage();
         if (object != null) {
+            NotEmpty notEmpty = (NotEmpty) annotation;
+            String statusCode = notEmpty.responseStatusCode();
+            String message = notEmpty.validatFailMessage();
             if (object.getClass().isArray()) {
                 ValidatorUtil.notEmpty((Object[]) object, statusCode, message);
             } else if (object instanceof Collection) {

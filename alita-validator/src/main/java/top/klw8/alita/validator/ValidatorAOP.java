@@ -25,6 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
+import top.klw8.alita.validator.annotations.TrimString;
+import top.klw8.alita.validator.utils.TrimStringUtil;
 
 /**
  * @author klw
@@ -87,27 +89,39 @@ public class ValidatorAOP {
             Method realMethod = pjp.getTarget().getClass().getDeclaredMethod(signature.getName(), targetMethod.getParameterTypes());
             Annotation[][] argAnns = realMethod.getParameterAnnotations();
             if (args != null && args.length > 0) {
-                for (int i = 0; i < args.length; i++) {
-                    Object arg = args[i];
-                    Object rt = checkAnnotationAndDoValidat(argAnns[i], arg);
-                    if (rt != null) {
-                        return rt;
-                    }
-                    if(arg != null) {
-                        // 把类注解拿出来看看有没有类级验证器,有就处理
-                        Object rt3 = checkAnnotationAndDoValidat(arg.getClass().getAnnotations(), arg);
-                        if (rt3 != null) {
-                            return rt3;
+                try {
+                    for (int i = 0; i < args.length; i++) {
+                        Object arg = args[i];
+                        Object rt = checkAnnotationAndDoValidat(argAnns[i], arg);
+                        if (rt != null) {
+                            args[i] = rt;
                         }
-                        List<Field> allFields = getAllFields(null, arg.getClass()); // 获取所有字段
-                        for (Field field : allFields) {
-                            field.setAccessible(true);
-                            Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), field.get(arg));
-                            if (rt2 != null) {
-                                return rt2;
+                        if(arg != null) {
+                            // 把类注解拿出来看看有没有类级验证器,有就处理
+                            Object rt3 = checkAnnotationAndDoValidat(arg.getClass().getAnnotations(), arg);
+                            if (rt3 != null) {
+                                args[i] = rt;
+                            }
+                            // 获取所有字段
+                            List<Field> allFields = getAllFields(null, arg.getClass());
+                            for (Field field : allFields) {
+                                field.setAccessible(true);
+                                Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), field.get(arg));
+                                if (rt2 != null) {
+                                    field.set(arg, rt2);
+                                }
                             }
                         }
                     }
+                } catch (ValidatorException ex) {
+                    String errMsg;
+                    if (StringUtils.isBlank(ex.getErrorMsg())) {
+                        errMsg = "【该验证器注解没有设置错误消息】";
+                    } else {
+                        errMsg = ex.getErrorMsg();
+                    }
+                    return respGenerator
+                            .generatorResponse(ex.getStatusCode(), errMsg, ex);
                 }
             }
 
@@ -132,10 +146,14 @@ public class ValidatorAOP {
      * @Param fieldValue 方法参数,类属性的值
      * @return Object 验证不通过的自定义响应
      */
-    private Object checkAnnotationAndDoValidat(Annotation[] annotations, Object fieldValue){
+    private Object checkAnnotationAndDoValidat(Annotation[] annotations, Object fieldValue) throws ValidatorException{
         if (annotations != null && annotations.length > 0) {
             // 遍历注解,找到验证器的注解
             for (Annotation fieldAnn : annotations) {
+                // 处理 trim 注解
+                if(fieldAnn instanceof TrimString){
+                    return TrimStringUtil.trim(fieldValue);
+                }
                 // 检查该注解是否有@ThisIsValidator,有就说明是验证器
                 if (fieldAnn.annotationType().getAnnotation(ThisIsValidator.class) != null) {
                     // 通过spring拿到验证器进行验证,先拿验证器的springBeanName
@@ -148,19 +166,8 @@ public class ValidatorAOP {
                             .getBean(validatorSpringBeanClass);
                     if (annotationsValidator != null) {
                         // 验证器不为空,调用验证器
-                        try {
-                            annotationsValidator.doValidator(fieldValue,
+                        annotationsValidator.doValidator(fieldValue,
                                     fieldAnn);
-                        } catch (ValidatorException ex) {
-                            String errMsg;
-                            if (StringUtils.isBlank(ex.getErrorMsg())) {
-                                errMsg = "【该验证器注解没有设置错误消息】";
-                            } else {
-                                errMsg = ex.getErrorMsg();
-                            }
-                            return respGenerator
-                                    .generatorResponse(ex.getStatusCode(), errMsg, ex);
-                        }
                     } else {
                         logger.error(
                                 "验证器【{}】指定的验证器实现没有找到,请验证器开发人员检查是否在 top.klw8.alita.validator.cfg.ValidatorsConfig 中配制了该实现",

@@ -5,13 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
 import top.klw8.alita.validator.beans.PrarmBean;
+import top.klw8.alita.validator.beans.PrarmTrimBean;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author klw
@@ -27,16 +25,37 @@ public class AlitaValidatorTestApplication {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(AlitaValidatorTestApplication.class, args);
         TestValidator tv = applicationContext.getBean(TestValidator.class);
 
-        PrarmBean testBean = new PrarmBean();
-        testBean.setStr2("2222");
-        Calendar calendar=Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(Calendar.DATE,-1);
-        testBean.setDate(calendar.getTime());
-        testBean.setLocalDate(LocalDate.now().plusDays(2));
-        testBean.setLocalDateTime(LocalDateTime.now().plusDays(1));
+//        PrarmBean testBean = new PrarmBean();
+//        testBean.setStr2("2222");
+//        Calendar calendar=Calendar.getInstance();
+//        calendar.setTime(new Date());
+//        calendar.add(Calendar.DATE,-1);
+//        testBean.setDate(calendar.getTime());
+//        testBean.setLocalDate(LocalDate.now().plusDays(2));
+//        testBean.setLocalDateTime(LocalDateTime.now().plusDays(1));
+//        System.out.println(tv.testValidator3(testBean));
 
-        System.out.println(tv.testValidator3(testBean));
+        PrarmTrimBean prarmTrimBean = new PrarmTrimBean();
+        List<Object> list = new ArrayList<>();
+        list.add(1);
+        list.add(" asdf ");
+        list.add("             d                 ");
+        prarmTrimBean.setList(list);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("111", "rrr  ");
+        map.put("222", 123);
+        prarmTrimBean.setMap(map);
+
+        String[] array = new String[2];
+        array[0] = "   1   ";
+        array[1] = "    2";
+        prarmTrimBean.setArray(array);
+
+        prarmTrimBean.setStr("324sfsd     ");
+        System.out.println(tv.testValidatorTrim(prarmTrimBean));
+
+        System.out.println("============================");
     }
 
 

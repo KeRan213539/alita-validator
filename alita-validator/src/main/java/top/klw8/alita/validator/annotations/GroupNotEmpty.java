@@ -1,6 +1,7 @@
 package top.klw8.alita.validator.annotations;
 
 import org.springframework.core.annotation.AliasFor;
+import top.klw8.alita.validator.ThisIsValidator;
 
 import java.lang.annotation.*;
 
@@ -16,6 +17,7 @@ import java.lang.annotation.*;
 @Documented
 @Inherited  // 子类可以继承父类的注解
 @Repeatable(GroupNotEmptys.class)
+@ThisIsValidator
 public @interface GroupNotEmpty {
 
     @AliasFor("validatFailMessage")

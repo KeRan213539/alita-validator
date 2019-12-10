@@ -25,14 +25,22 @@ import java.util.Map;
  * @Description: GroupNotEmpty 验证器实现
  * @date 2019/11/5 14:47
  */
-@ValidatorImpl(validator = {GroupNotEmptys.class})
+@ValidatorImpl(validator = {GroupNotEmptys.class, GroupNotEmpty.class})
 @Slf4j
 public class GroupNotEmptyImpl implements IAnnotationsValidator {
     @Override
     public void doValidator(Object object, Annotation annotation) throws ValidatorException {
         if(object != null){
-            GroupNotEmptys groupNotEmptys = (GroupNotEmptys)annotation;
-            GroupNotEmpty[] groupNotEmptyArray = groupNotEmptys.value();
+            GroupNotEmpty[] groupNotEmptyArray;
+            if(annotation instanceof GroupNotEmptys){
+                GroupNotEmptys groupNotEmptys = (GroupNotEmptys)annotation;
+                groupNotEmptyArray = groupNotEmptys.value();
+            } else if(annotation instanceof GroupNotEmpty){
+                groupNotEmptyArray = new GroupNotEmpty[1];
+                groupNotEmptyArray[0] = (GroupNotEmpty)annotation;
+            } else {
+                groupNotEmptyArray = new GroupNotEmpty[0];
+            }
             for(GroupNotEmpty groupNotEmpty : groupNotEmptyArray){
                 String statusCode = groupNotEmpty.responseStatusCode();
                 String message = groupNotEmpty.validatFailMessage();
