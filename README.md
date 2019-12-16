@@ -147,5 +147,5 @@ public class NotEmptyImpl implements IAnnotationsValidator {
 }
 ```
 
-验证器实现不返回任值,验证不通过时抛出 top.klw8.alita.validator.ValidatorException 异常即可
+验证器实现不返回任值,验证不通过时抛出 top.klw8.alita.validator.ValidatorException 异常即可 
 
