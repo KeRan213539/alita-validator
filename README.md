@@ -1,5 +1,4 @@
 # Alita Validator
-
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 从Alita项目中抽取出来的注解验证器, 用于对方法参数做验证,如常用的非空,手机号格式,邮箱格式,数字范围等. 通常用于HTTP项目(包括Restful)中客户端提交的参数的验证
