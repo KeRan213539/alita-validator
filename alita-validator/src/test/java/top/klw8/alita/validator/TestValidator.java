@@ -2,10 +2,12 @@ package top.klw8.alita.validator;
 
 import org.springframework.stereotype.Component;
 import top.klw8.alita.validator.annotations.IntegerRange;
+import top.klw8.alita.validator.annotations.MultiFieldRequired;
 import top.klw8.alita.validator.annotations.Required;
 import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
 import top.klw8.alita.validator.beans.PrarmBean;
 import top.klw8.alita.validator.beans.PrarmTrimBean;
+import top.klw8.alita.validator.beans.TestBean;
 
 /**
  * @author klw
@@ -35,6 +37,11 @@ public class TestValidator {
 
     @UseValidator
     public String testValidatorTrim(@Required("参数不能为空") PrarmTrimBean prarmTrimBean) {
+        return "OK";
+    }
+
+    @UseValidator
+    public String testValidator4(@MultiFieldRequired({"list::555::list不能为空","url::666::url不能为空"}) TestBean bean) {
         return "OK";
     }
 

@@ -318,4 +318,17 @@ public class ValidatorUtil {
         }
     }
 
+    /**
+     * @author klw(213539@qq.com)
+     * @Description: 验证字符串是否是http url
+     */
+    public static void isHttpUrl(String str, String statusCode, String message) {
+        hasText(str, statusCode, message);
+        Pattern p = Pattern.compile("(https?)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
+        Matcher m = p.matcher(str);
+        if (!m.matches()) {
+            throw new ValidatorException(statusCode, message);
+        }
+    }
+
 }
