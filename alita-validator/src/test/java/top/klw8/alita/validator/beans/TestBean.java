@@ -2,9 +2,7 @@ package top.klw8.alita.validator.beans;
 
 import lombok.Getter;
 import lombok.Setter;
-import top.klw8.alita.validator.annotations.GroupItem;
-import top.klw8.alita.validator.annotations.HttpUrl;
-import top.klw8.alita.validator.annotations.TrimString;
+import top.klw8.alita.validator.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +24,12 @@ public class TestBean {
     @HttpUrl
     private String url;
 
-    private Object[] array;
+    @Required("日期不能为空")
+    @CheckDateFormat
+    private String date;
+
+    @Required("身份证号不能为空")
+    @IdCard
+    private String idNo;
 
 }

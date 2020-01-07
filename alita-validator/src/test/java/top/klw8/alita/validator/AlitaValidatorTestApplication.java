@@ -7,10 +7,12 @@ import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
 import top.klw8.alita.validator.beans.PrarmBean;
 import top.klw8.alita.validator.beans.PrarmTrimBean;
 import top.klw8.alita.validator.beans.TestBean;
+import top.klw8.alita.validator.utils.ValidatorUtil;
 
 import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -66,8 +68,9 @@ public class AlitaValidatorTestApplication {
         testBean.setList(list);
         String url = "http://blog.csdn.net/wangchaoqi1985/article/details/82810471?abc=" + URLEncoder.encode("中文");
         testBean.setUrl(url);
+        testBean.setDate("2019-08-08 18:18:18");
+        testBean.setIdNo("530102198808182568");
         System.out.println(tv.testValidator4(testBean));
-
         System.out.println("============DONE!!!================");
     }
 

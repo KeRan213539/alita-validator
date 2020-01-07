@@ -22,6 +22,8 @@
 * **@GroupNotEmpty注解(0.3新增)**: 用于验证一组指定的属性,其中至少几个非空, 配合@GroupItem(用于标注组中的元素), 如果一个类中有多组,需要配合@GroupNotEmptys 使用,具体使用方式参考
 * **@MultiFieldRequired(0.4新增):** 可以在方法参数上指定参数Bean中的属性为必传
 * **@HttpUrl(0.4新增):**验证字符串格式是否是url, 如果url中包含非英文部分,需要做url encode
+* **@CheckDateFormat(0.4新增):**检查日期字符串是否是指定格式,默认格式为 yyyy-MM-dd HH:mm:ss
+* **@IdCard(0.4新增):**校验身份证号
 
 ## 更新日志
 
@@ -29,6 +31,8 @@
 
 * 增加 @MultiFieldRequired 验证器,可以在方法参数上指定参数Bean中的属性为必传
 * 增加 @HttpUrl 验证器, 验证字符串格式是否是url, 如果url中包含非英文部分,需要做url encode
+* 增加 @CheckDateFormat 验证器,用于检查日期字符串是否是指定格式,默认格式为 yyyy-MM-dd HH:mm:ss
+* 增加 @IdCard 验证器,用于校验身份证号
 
 ### **0.3**
 
