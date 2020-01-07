@@ -20,9 +20,9 @@ public class RequiredImpl implements IAnnotationsValidator {
 
     @Override
     public void doValidator(Object object, Annotation annotation) throws ValidatorException {
-        Required notEmpty = (Required) annotation;
-        String statusCode = notEmpty.responseStatusCode();
-        String message = notEmpty.validatFailMessage();
+        Required required = (Required) annotation;
+        String statusCode = required.responseStatusCode();
+        String message = required.validatFailMessage();
         ValidatorUtil.notNull(object, statusCode, message);
     }
 

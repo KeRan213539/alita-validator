@@ -4,41 +4,36 @@ import org.springframework.core.annotation.AliasFor;
 import top.klw8.alita.validator.ThisIsValidator;
 
 import java.lang.annotation.*;
-import java.util.Date;
-// 这行注释为了白嫖idea
+
 /**
- * @ClassName: DateRange
- * @Description: 日期格式/时间范围验证器,支持旧的方式和 LocalDate/LocalDateTime
- * @author xp
- * @date 2019/11/19 9:15
+ * @author klw(213539 @ qq.com)
+ * @ClassName: HttpUrl
+ * @Description: 验证字符串格式是否是url, 如果url中包含非英文部分,需要做url encode
+ * @date 2020/1/6 17:03
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
 @Inherited  // 子类可以继承父类的注解
 @ThisIsValidator
-public @interface DateRange {
+public @interface HttpUrl {
 
     @AliasFor("validatFailMessage")
-    String value() default "日期不在范围";
-    
+    String value() default "http url格式不正确";
+
     /**
      * @Title: responseStatusCode
      * @Description: 验证失败(不通过)的code
      * @return
      */
     String responseStatusCode() default "500";
-    
+
     /**
      * @Title: validatFailMessage
      * @Description: 验证失败(不通过)的文字消息,可为空,默认使用ResponseStatusCodeEnum对应的消息
      * @return
      */
     @AliasFor("value")
-    String validatFailMessage() default "日期不在范围";
-
-    int beforeNowDays() default 0;
-
-    int afterNowDays() default 0;
+    String validatFailMessage() default "http url格式不正确";
 
 }
