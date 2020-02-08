@@ -28,6 +28,10 @@ public class TestBean {
     @CheckDateFormat
     private String date;
 
+    @Required("str length 不能为空")
+    @StringLength(value = "字符串长度不能大于3", maxLength = 3)
+    private String strLength;
+
     @Required("身份证号不能为空")
     @IdCard
     private String idNo;

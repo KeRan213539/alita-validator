@@ -70,6 +70,7 @@ public class AlitaValidatorTestApplication {
         testBean.setUrl(url);
         testBean.setDate("2019-08-08 18:18:18");
         testBean.setIdNo("530102198808182568");
+        testBean.setStrLength("123");
         System.out.println(tv.testValidator4(testBean));
         System.out.println("============DONE!!!================");
     }
