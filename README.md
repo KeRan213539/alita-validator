@@ -10,6 +10,9 @@
 ## 主要功能
 
 * 基于Spring Boot 2.x
+* **大部分注解在值为null的情况下都是通过:** 目前的验证器除了@Required 在值为null的情况下不通过外,其他验证器在值为null的时候都是通过的,所以如果某个参数是必传的话,需要配合@Required 使用
+* **验证器可以叠加使用:** 例如一个参数是url,并且是必传,可以使用 @Required 和 @HttpUrl
+* **关于@NotEmpty验证器: ** 该验证器是在值非null的情况下才工作,验证是否为空.如:String trim后="",数组size=0,集合size=0),Map size=0
 * **验证JAVA方法的参数是否符合要求**：验证器是基于注解的,可用于验证任何的JAVA方法的参数
 * **自定义错误码**：使用注解的时候可以自定义验证失败时的错误码
 * **自定义错误消息**: 使用注解的时候可以自定义验证失败的消息,该消息为一个字符串,如果做国际化,可以在错误消息中放入国际化资源标识,在responseMsgGenerator 处理该资源标识
@@ -24,8 +27,13 @@
 * **@HttpUrl(0.4新增):**验证字符串格式是否是url, 如果url中包含非英文部分,需要做url encode
 * **@CheckDateFormat(0.4新增):**检查日期字符串是否是指定格式,默认格式为 yyyy-MM-dd HH:mm:ss
 * **@IdCard(0.4新增):**校验身份证号
+* **@StringLength(0.5新增):** 用于验证trim 后的string的最大、最小长度
 
 ## 更新日志
+
+### **0.5**
+
+* 增加 @StringLength 验证器, 用于验证trim 后的string的最大、最小长度
 
 ### **0.4**
 
@@ -56,7 +64,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.4</version>
+    <version>0.5</version>
 </dependency>
 ```
 
@@ -94,11 +102,8 @@ public CustomResult xxx(Demo demo)
 private String fullName;
 ```
 
-
-
-
-
 ## 开发验证器
+
 验证器注解可以在使用的项目中单独开发,通过配置项"alita.validator.custom.packages" 指定验证器实现所在包就行,多个包路径用逗号分隔,验证器注解在哪个包无所谓.当然也欢迎各种PR~(如果要PR,则验证器注解必须放在 "top.klw8.alita.validator.annotations"包下,实现必须放在"top.klw8.alita.validator.annotations.impl"包下)
 
 **定义验证器注解**
