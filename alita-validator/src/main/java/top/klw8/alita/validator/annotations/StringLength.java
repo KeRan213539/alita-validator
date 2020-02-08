@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
-@Inherited  // 子类可以继承父类的注解
+@Inherited  //  子类可以继承父类的注解
 @ThisIsValidator
 public @interface StringLength {
 
