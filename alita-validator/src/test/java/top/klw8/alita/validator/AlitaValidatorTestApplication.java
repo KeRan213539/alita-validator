@@ -57,7 +57,23 @@ public class AlitaValidatorTestApplication {
 //        System.out.println(tv.testValidatorTrim(prarmTrimBean));
 
 
+        TestBean2 testBean2 = new TestBean2();
+        testBean2.setTestBean3(new TestBean3("123"));
+        TestBean3[] testBean3Array = new TestBean3[1];
+        testBean3Array[0] = new TestBean3("arr");
+        List<TestBean3> testBean3List = new ArrayList<>(1);
+        testBean3List.add(new TestBean3("li1"));
+        testBean3List.add(new TestBean3("li2"));
+        testBean3List.add(new TestBean3("li3"));
+        Map<String, TestBean3> testBean3Map = new HashMap<>(1);
+        testBean3Map.put("test", new TestBean3("map"));
+
+        testBean2.setTestBean3Array(testBean3Array);
+        testBean2.setTestBean3List(testBean3List);
+        testBean2.setTestBean3Map(testBean3Map);
+
         TestBean testBean = new TestBean();
+        testBean.setTestBean2(testBean2);
         List<Object> list = new ArrayList<>();
         list.add(1);
         list.add(" asdf ");
@@ -68,11 +84,6 @@ public class AlitaValidatorTestApplication {
         testBean.setDate("2019-08-08 18:18:18");
 //        testBean.setIdNo("530102198808182568");
         testBean.setStrLength("123");
-        TestBean3 testBean3 = new TestBean3();
-        testBean3.setStrLength("123");
-        TestBean2 testBean2 = new TestBean2();
-        testBean2.setTestBean3(testBean3);
-        testBean.setTestBean2(testBean2);
         System.out.println(tv.testValidator4(testBean));
         System.out.println("============DONE!!!================");
     }

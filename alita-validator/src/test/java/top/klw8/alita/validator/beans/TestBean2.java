@@ -22,4 +22,19 @@ public class TestBean2 {
     @ParamBean
     private TestBean3 testBean3;
 
+    @Required("testBean3Array不能为空")
+    @NotEmpty("testBean3Array不能为空")
+    @ParamBean
+    private TestBean3[] testBean3Array;
+
+    @Required("testBean3List不能为空")
+    @NotEmpty("testBean3List不能为空")
+    @ParamBean
+    private List<TestBean3> testBean3List;
+
+    @Required("testBean3Map不能为空")
+    @NotEmpty("testBean3Map不能为空")
+    @ParamBean
+    private Map<String, TestBean3> testBean3Map;
+
 }
