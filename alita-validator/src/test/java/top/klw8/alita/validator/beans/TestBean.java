@@ -2,6 +2,7 @@ package top.klw8.alita.validator.beans;
 
 import lombok.Getter;
 import lombok.Setter;
+import top.klw8.alita.validator.ParamBean;
 import top.klw8.alita.validator.annotations.*;
 
 import java.util.List;
@@ -32,8 +33,11 @@ public class TestBean {
     @StringLength(value = "字符串长度不能大于3", maxLength = 3)
     private String strLength;
 
-    @Required("身份证号不能为空")
     @IdCard
     private String idNo;
+
+    @Required("testBean2不能为空")
+    @ParamBean
+    private TestBean2 testBean2;
 
 }
