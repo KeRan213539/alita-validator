@@ -3,10 +3,7 @@ package top.klw8.alita.validator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import top.klw8.alita.validator.beans.GroupNotEmptyTestBean;
-import top.klw8.alita.validator.beans.PrarmBean;
-import top.klw8.alita.validator.beans.PrarmTrimBean;
-import top.klw8.alita.validator.beans.TestBean;
+import top.klw8.alita.validator.beans.*;
 import top.klw8.alita.validator.utils.ValidatorUtil;
 
 import java.net.URLEncoder;
@@ -69,8 +66,13 @@ public class AlitaValidatorTestApplication {
         String url = "http://blog.csdn.net/wangchaoqi1985/article/details/82810471?abc=" + URLEncoder.encode("中文");
         testBean.setUrl(url);
         testBean.setDate("2019-08-08 18:18:18");
-        testBean.setIdNo("530102198808182568");
+//        testBean.setIdNo("530102198808182568");
         testBean.setStrLength("123");
+        TestBean3 testBean3 = new TestBean3();
+        testBean3.setStrLength("123");
+        TestBean2 testBean2 = new TestBean2();
+        testBean2.setTestBean3(testBean3);
+        testBean.setTestBean2(testBean2);
         System.out.println(tv.testValidator4(testBean));
         System.out.println("============DONE!!!================");
     }
