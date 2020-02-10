@@ -3,10 +3,7 @@ package top.klw8.alita.validator;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,6 +24,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import top.klw8.alita.validator.annotations.TrimString;
 import top.klw8.alita.validator.utils.TrimStringUtil;
+import top.klw8.alita.validator.utils.ValidatorUtil;
 
 /**
  * @author klw
@@ -143,13 +141,33 @@ public class ValidatorAOP {
         List<Field> allFields = getAllFields(null, arg.getClass());
         for (Field field : allFields) {
             field.setAccessible(true);
-            Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), field.get(arg));
+            Object fieldValue = field.get(arg);
+
+            Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), fieldValue);
             if (rt2 != null) {
                 field.set(arg, rt2);
             }
             // 如果属性上有ParamBean注解,需要处理属性的java type中的验证器
             if(field.isAnnotationPresent(ParamBean.class)){
-                processField(field.get(arg));
+                // 处理常用集合
+                if (fieldValue != null && fieldValue.getClass().isArray()) {
+                    Object[] array = (Object[])fieldValue;
+                    for(Object arrayItem : array){
+                        processField(arrayItem);
+                    }
+                } else if (fieldValue != null && fieldValue instanceof Collection) {
+                    Collection<?> collection = (Collection<?>) fieldValue;
+                    for(Object item : collection){
+                        processField(item);
+                    }
+                } else if (fieldValue != null && fieldValue instanceof Map) {
+                    Map<?, ?> map = (Map<?, ?>) fieldValue;
+                    for(Object item : map.values()){
+                        processField(item);
+                    }
+                } else {
+                    processField(fieldValue);
+                }
             }
         }
     }

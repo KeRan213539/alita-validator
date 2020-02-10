@@ -15,6 +15,10 @@ import top.klw8.alita.validator.annotations.StringLength;
 @Setter
 public class TestBean3 {
 
+    public TestBean3(String strLength){
+        this.strLength = strLength;
+    }
+
     @Required("str length 不能为空")
     @StringLength(value = "字符串长度不能大于3", maxLength = 3)
     private String strLength;

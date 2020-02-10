@@ -28,8 +28,14 @@
 * **@CheckDateFormat(0.4新增):**检查日期字符串是否是指定格式,默认格式为 yyyy-MM-dd HH:mm:ss
 * **@IdCard(0.4新增):**校验身份证号
 * **@StringLength(0.5新增):** 用于验证trim 后的string的最大、最小长度
+* **支持Bean中的Bean 类型属性中的验证器(0.6新增): **如果参数是个java bean(bean1),并且这个bean中的属性是另一个bean(bean2),可以在bean2的属性中使用验证器,支持无限级. 同时支持集合中的泛型中的验证器(数组 ,Collection,Map),需要使用@ParamBean注解
 
 ## 更新日志
+
+### **0.6**
+
+* 新增支持Bean中的Bean 类型属性中的验证器,无限级.需要使用@ParamBean注解
+* @ParamBean注解同时支持集合中的泛型中的验证器(数组 ,Collection,Map)
 
 ### **0.5**
 
@@ -64,7 +70,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.5</version>
+    <version>0.6</version>
 </dependency>
 ```
 
