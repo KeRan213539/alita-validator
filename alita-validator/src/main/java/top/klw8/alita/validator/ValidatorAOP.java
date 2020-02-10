@@ -102,15 +102,8 @@ public class ValidatorAOP {
                             if (rt3 != null) {
                                 args[i] = rt;
                             }
-                            // 获取所有字段
-                            List<Field> allFields = getAllFields(null, arg.getClass());
-                            for (Field field : allFields) {
-                                field.setAccessible(true);
-                                Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), field.get(arg));
-                                if (rt2 != null) {
-                                    field.set(arg, rt2);
-                                }
-                            }
+                            // 处理属性上的注解
+                            this.processField(arg);
                         }
                     }
                 } catch (ValidatorException ex) {
@@ -136,6 +129,29 @@ public class ValidatorAOP {
             throw new RuntimeException("AOP Point Cut ValidatorAOP Throw Exception :" + e.getMessage(), e);
         }
         return ret;
+    }
+
+    /**
+     * @author klw(213539@qq.com)
+     * @Description: 处理方法参数中的属性
+     * @Date 2020/2/10 12:48
+     * @param: arg
+     * @return void
+     */
+    private void processField(Object arg) throws IllegalAccessException {
+        // 获取所有字段
+        List<Field> allFields = getAllFields(null, arg.getClass());
+        for (Field field : allFields) {
+            field.setAccessible(true);
+            Object rt2 = checkAnnotationAndDoValidat(field.getAnnotations(), field.get(arg));
+            if (rt2 != null) {
+                field.set(arg, rt2);
+            }
+            // 如果属性上有ParamBean注解,需要处理属性的java type中的验证器
+            if(field.isAnnotationPresent(ParamBean.class)){
+                processField(field.get(arg));
+            }
+        }
     }
 
     /**
