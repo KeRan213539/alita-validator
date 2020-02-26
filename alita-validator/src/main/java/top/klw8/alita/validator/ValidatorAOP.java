@@ -101,7 +101,7 @@ public class ValidatorAOP {
                                 args[i] = rt;
                             }
                             // 处理属性上的注解
-                            this.processField(arg, 0);
+                            this.processField(arg, -1);
                         }
                     }
                 } catch (ValidatorException ex) {
@@ -141,6 +141,7 @@ public class ValidatorAOP {
             logger.warn("使用验证器的Bean的深度已超过10层,剩下的验证器将被忽略!请检查Bean中是否有循环引用!");
             return;
         }
+        processCount++;
         // 获取所有字段
         List<Field> allFields = getAllFields(null, arg.getClass());
         for (Field field : allFields) {
