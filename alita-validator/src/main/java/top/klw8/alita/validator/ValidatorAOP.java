@@ -101,7 +101,7 @@ public class ValidatorAOP {
                                 args[i] = rt;
                             }
                             // 处理属性上的注解
-                            this.processField(arg);
+                            this.processField(arg, 0);
                         }
                     }
                 } catch (ValidatorException ex) {
@@ -136,7 +136,11 @@ public class ValidatorAOP {
      * @param: arg
      * @return void
      */
-    private void processField(Object arg) throws IllegalAccessException {
+    private void processField(Object arg, int processCount) throws IllegalAccessException {
+        if(processCount >10){
+            logger.warn("使用验证器的Bean的深度已超过10层,剩下的验证器将被忽略!请检查Bean中是否有循环引用!");
+            return;
+        }
         // 获取所有字段
         List<Field> allFields = getAllFields(null, arg.getClass());
         for (Field field : allFields) {
@@ -153,20 +157,20 @@ public class ValidatorAOP {
                 if (fieldValue != null && fieldValue.getClass().isArray()) {
                     Object[] array = (Object[])fieldValue;
                     for(Object arrayItem : array){
-                        processField(arrayItem);
+                        processField(arrayItem, processCount);
                     }
                 } else if (fieldValue != null && fieldValue instanceof Collection) {
                     Collection<?> collection = (Collection<?>) fieldValue;
                     for(Object item : collection){
-                        processField(item);
+                        processField(item, processCount);
                     }
                 } else if (fieldValue != null && fieldValue instanceof Map) {
                     Map<?, ?> map = (Map<?, ?>) fieldValue;
                     for(Object item : map.values()){
-                        processField(item);
+                        processField(item, processCount);
                     }
                 } else {
-                    processField(fieldValue);
+                    processField(fieldValue, processCount);
                 }
             }
         }
