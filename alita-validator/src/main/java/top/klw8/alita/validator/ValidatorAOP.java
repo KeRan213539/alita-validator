@@ -101,7 +101,7 @@ public class ValidatorAOP {
                                 args[i] = rt;
                             }
                             // 处理属性上的注解
-                            this.processField(arg, -1);
+                            this.processField(arg, 0);
                         }
                     }
                 } catch (ValidatorException ex) {
@@ -137,7 +137,7 @@ public class ValidatorAOP {
      * @return void
      */
     private void processField(Object arg, int processCount) throws IllegalAccessException {
-        if(processCount >10){
+        if(processCount >= 10){
             logger.warn("使用验证器的Bean的深度已超过10层,剩下的验证器将被忽略!请检查Bean中是否有循环引用!");
             return;
         }
