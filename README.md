@@ -32,6 +32,14 @@
 
 ## 更新日志
 
+### **0.7**
+
+* top.klw8.alita.validator.ValidatorException 中新增一个验证不通过的方法的返回参数类型,便于在统一响应生成器中处理返回类型
+
+### **0.6**
+
+* Bean中的Bean 类型属性中的验证器增加层级限制,最多10层,超过10层将忽略并日志输出警告
+
 ### **0.6**
 
 * 新增支持Bean中的Bean 类型属性中的验证器,无限级.需要使用@ParamBean注解
@@ -70,7 +78,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.6</version>
+    <version>0.7</version>
 </dependency>
 ```
 
