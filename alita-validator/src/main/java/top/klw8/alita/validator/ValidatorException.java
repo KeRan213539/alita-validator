@@ -15,6 +15,8 @@ public class ValidatorException extends RuntimeException {
 
     private String errorMsg;
 
+    private Class<?> methodReturnType;
+
     public ValidatorException(String statusCode, String errorMsg) {
         super("【" + statusCode + "】" + errorMsg);
         this.statusCode = statusCode;
@@ -27,6 +29,14 @@ public class ValidatorException extends RuntimeException {
 
     public String getErrorMsg() {
         return errorMsg;
+    }
+
+    public void setMethodReturnType(Class<?> methodReturnType){
+        this.methodReturnType = methodReturnType;
+    }
+
+    public Class<?> getMethodReturnType(){
+        return this.methodReturnType;
     }
 
 }
