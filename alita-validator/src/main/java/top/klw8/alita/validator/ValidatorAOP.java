@@ -111,6 +111,7 @@ public class ValidatorAOP {
                     } else {
                         errMsg = ex.getErrorMsg();
                     }
+                    ex.setMethodReturnType(realMethod.getReturnType());
                     return respGenerator
                             .generatorResponse(ex.getStatusCode(), errMsg, ex);
                 }
