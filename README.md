@@ -32,6 +32,11 @@
 
 ## 更新日志
 
+### **0.8**
+
+* 修复当使用了 @ParamBean 注解,被注解的属性的值为null时抛异常的bug
+* 数字相关验证器修改为强制设置错误消息
+
 ### **0.7**
 
 * top.klw8.alita.validator.ValidatorException 中新增一个验证不通过的方法的返回参数类型,便于在统一响应生成器中处理返回类型
@@ -78,7 +83,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.7</version>
+    <version>0.8</version>
 </dependency>
 ```
 
