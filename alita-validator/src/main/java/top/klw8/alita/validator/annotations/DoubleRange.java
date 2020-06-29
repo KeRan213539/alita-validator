@@ -24,9 +24,6 @@ import top.klw8.alita.validator.ThisIsValidator;
 @ThisIsValidator
 public @interface DoubleRange {
 
-    @AliasFor("validatFailMessage")
-    String value() default "";
-    
     /**
      * @Title: responseStatusCode
      * @Description: 验证失败(不通过)的code
@@ -39,8 +36,7 @@ public @interface DoubleRange {
      * @Description: 验证失败(不通过)的文字消息,可为空,默认使用ResponseStatusCodeEnum对应的消息
      * @return
      */
-    @AliasFor("value")
-    String validatFailMessage() default "";
+    String validatFailMessage();
     
     double min();
     

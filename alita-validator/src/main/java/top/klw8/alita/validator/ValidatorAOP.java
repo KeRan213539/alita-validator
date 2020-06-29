@@ -154,19 +154,19 @@ public class ValidatorAOP {
                 field.set(arg, rt2);
             }
             // 如果属性上有ParamBean注解,需要处理属性的java type中的验证器
-            if(field.isAnnotationPresent(ParamBean.class)){
+            if(fieldValue != null && field.isAnnotationPresent(ParamBean.class)){
                 // 处理常用集合
-                if (fieldValue != null && fieldValue.getClass().isArray()) {
+                if (fieldValue.getClass().isArray()) {
                     Object[] array = (Object[])fieldValue;
                     for(Object arrayItem : array){
                         processField(arrayItem, processCount);
                     }
-                } else if (fieldValue != null && fieldValue instanceof Collection) {
+                } else if (fieldValue instanceof Collection) {
                     Collection<?> collection = (Collection<?>) fieldValue;
                     for(Object item : collection){
                         processField(item, processCount);
                     }
-                } else if (fieldValue != null && fieldValue instanceof Map) {
+                } else if (fieldValue instanceof Map) {
                     Map<?, ?> map = (Map<?, ?>) fieldValue;
                     for(Object item : map.values()){
                         processField(item, processCount);
