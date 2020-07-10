@@ -110,7 +110,7 @@ public class ValidateUtil {
      * @Description: 验证手机号格式是否正确
      */
     public static boolean isMobileNO(String mobileNo) {
-        String telRegex = "^1[34578]\\d{9}$";
+        String telRegex = "^1[345789]\\d{9}$";
         return checkStringByRegx(mobileNo, telRegex);
     }
 
