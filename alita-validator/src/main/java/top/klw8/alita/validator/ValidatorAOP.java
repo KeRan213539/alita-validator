@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +34,7 @@ import top.klw8.alita.validator.utils.ValidatorUtil;
  * @date 2018年9月17日 下午4:46:03
  */
 @Aspect
+@Slf4j
 public class ValidatorAOP {
 
     private static Logger logger = LoggerFactory.getLogger(ValidatorAOP.class);
@@ -117,14 +119,15 @@ public class ValidatorAOP {
                 }
             }
 
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error("", e);
         }
 
         Object ret;
         try {
             ret = pjp.proceed();
         } catch (Throwable e) {
+            log.error("AOP Point Cut ValidatorAOP Throw Exception :", e);
             throw new RuntimeException("AOP Point Cut ValidatorAOP Throw Exception :" + e.getMessage(), e);
         }
         return ret;

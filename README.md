@@ -87,7 +87,7 @@
 <dependency>
     <groupId>top.klw8.alita</groupId>
     <artifactId>alita-validator</artifactId>
-    <version>0.8</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
