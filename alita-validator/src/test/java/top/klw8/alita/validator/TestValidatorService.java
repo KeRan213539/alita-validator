@@ -16,7 +16,7 @@ import top.klw8.alita.validator.beans.TestBean;
  * @date 2019/6/12 9:49
  */
 @Component
-public class TestValidator {
+public class TestValidatorService {
 
     @UseValidator
     public String testValidator1(@Required("参数不能为空") PrarmBean prarmBean,
