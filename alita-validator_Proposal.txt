@@ -1,0 +1,132 @@
+= Alita-validator Proposal =
+
+== Abstract ==
+Alita-validator是一个简单易用的 API 验证器.提供自定义业务code与业务消息并返回给API消费者.使用者可自定义错误的返回包装.
+
+使用者可以自己扩展一些非通用的业务相关的验证器.
+
+不同于JSR 380-Bean Validation 标准，alita-validator在验证不通过时不会抛出异常而是把使用者设置的code和消息返回给API调用者.
+
+目前基于spring aop实现功能,未来计划:
+
+* 提供不同的实现方式以提供给非spring项目使用
+* 增加更多的通用验证器
+* 提供选择验证不通过时的处理方式: 将消息返回给API调用者/抛出异常
+
+Alita-validator的目标是让使用者能更专注于业务逻辑,把API参数的验证工作交给alita-validator,节省验证参数的代码.
+
+== Proposal ==
+Alita-validator目前还比较稚嫩,不够强壮.我希望通过捐赠给Apache让更多的人认识它,发展并壮大它.
+
+== Background ==
+以前我在做API开发的时候,总会有很多代码是用来做参数验证的,这些代码很多是重复的并且很枯燥的.
+虽然有 JSR 380-Bean Validation标准并有很多实现,但是这些实现都是把不通过的消息作为异常抛出,并且没有消息对应的code.
+而做为一个API,我希望将验证不通过的原因告诉API的调用者以便做相应处理.
+例如基于 http 的API,参数很多时候是来自于用户的输入.UI可以针对这些错误消息做一些处理并以某种方式让用户知道.
+
+== Rationale ==
+Alita-validator 是使用java开发的,通过注解的方式提供API参数验证能力. 注解可以使用在方法参数上,也可以使用在Java Bean的属性中.
+通过各种验证器注解的组合,可以实现对API参数的验证. 例如: 验证一个字符串是否是email. 验证一个密码是否满足复杂度要求.等
+We expect more interesting features and use cases to emerge from the community ranging.
+
+== Current Status ==
+
+=== Meritocracy ===
+The intent of this proposal is to start building a diverse developer and user community around alita-validator following the ASF meritocracy model. 
+We plan to invite more people as committers if they are interested and contribute to this project.
+
+=== Community ===
+目前alita-validator主要由我个人开发,我的朋友对它增加了一些功能.我希望通过捐赠给Apache的方式来扩大贡献者的基础.
+
+=== Core Developers ===
+目前alita-validator主要由我和我的朋友一起开发.
+
+=== Aligment ===
+The ASF is the natural choice to host the alita-validator project as its goal of encouraging community-driven open source projects fits with our vision for alita-validator. 
+
+== Known Risks ==
+
+=== Orphaned products ===
+alita-validator是从我的工作需求中产生的,但我相信这不会只是我一个人的需求.我会在我的职业剩下中一直使用并完善它.只要我还能工作,它就不会成为孤儿.
+
+=== Inexperience with Open Source ===
+开源给我的工作中带来很大便利,并且学习开源能让我的能力提升.所以我认为我应该对开源做出我自己的贡献.
+目前我积极参与一些开源项目的开发,例如 alibaba nacos, apache dubbo等项目,并从中学习到了一些经验.它们是我很好的学习对象.
+
+=== Homogenous Developers ===
+目前alita-validator主要由我和我的朋友一起开发.we work on one common code base.
+
+=== Reliance on Salaried Developers ===
+我和我的朋友因为兴趣和它的实用性一起开发alita-validator,但是我们并没有因为alita-validator而得到薪水.
+Alita-validator 并不是我们为公司开发的,虽然我们在工作中使用了它.
+
+=== Relationships with Other Apache Products ===
+alita-validator的开发使用了一些apache commons的产品,例如: maven, commons-collections, commons-lang3 等
+
+=== A Excessive Fascination with the Apache Brand ===
+While we respect the reputation of the Apache brand and have no doubt that it will attract new contributors 
+and users, our interest is primarily to give alita-validator a solid home as an open source project 
+following an established development model. 
+More reasons are provided in the Rationale and Alignment sections.
+
+== Documentation ==
+Information about alita-validator can be found at https://github.com/KeRan213539/alita-validator.
+目前只有中文文档,英文文档我们会尽快补充.
+
+== Initial Source ==
+Alita-validator was initially developed with open-sourced.
+It is currently hosted on Github.com under an Apache license 2.0 at https://github.com/KeRan213539/alita-validator.
+
+== Source and Intellectual Property Submission Plan ==
+As soon as alita-validator is approved to join Apache Incubator, ran ke will provide
+the Software Grant Agreement(SGA)
+ and initial committers will submit ICLA(s).
+The code is already licensed under the Apache Software License, version 2.0.
+
+== External Dependencies ==
+Alita-validator has the following external dependencies.As all dependencies are managed using Apache Maven.
+
+* JDK 1.8+
+* Apache Maven
+* JUnit
+* Slf4j
+* Apache Commons
+* Spring-context
+* Spring-boot
+* Fastjson
+* Lombok
+* Aspectjrt
+
+== Required Resources ==
+
+=== Mailing Lists ===
+* alita-validator-private (PMC discussion)
+* alita-validator-dev (developer discussion)
+* alita-validator-commits (SCM commits)
+* alita-validator-issues (JIRA issue feed) 
+
+==== Subversion Directory ====
+* Git is the preferred source control system. 
+
+=== Issue Tracking ===
+The community would like to continue using GitHub Issues.
+
+==== Other Resources ====
+The existing source code already has unit tests so we will make use of existing Apache continuous testing infrastructure. The resulting load should not be very large.
+
+== Initial Committers ==
+* Ran Ke(213539 at qq dot com)
+* Lei Zhang(freedom801213 at gmail dot com)
+* Ping Xu(xu6465 at qq dot com)
+
+== Affiliations ==
+The initial committers are friends.
+
+== Sponsors ==
+
+==== Champion ====
+
+==== Nominated Mentors ====
+
+==== Sponsoring Entity ====
+We are requesting the Incubator to sponsor this project.

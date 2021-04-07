@@ -1,0 +1,130 @@
+= Alita-validator Proposal =
+
+== Abstract ==
+Alita-validator is a simple and easy-to-use API verifier. It provides custom business code and business message and returns it to API consumers. Users can customize error return packaging.
+Users can extend some non generic business related verifiers themselves.
+
+Unlike JSR 380 bean validation standard, alita-validator does not throw an exception when the validation fails. Instead, it returns the code and message set by the user to the API caller.
+At present, the functions are implemented based on spring AOP, and future plans are made:
+* Provide different implementations for non spring projects
+* Add more universal validator
+* Provide the way to handle the failure of selection verification: return the message to the API caller / throw an exception
+
+The goal of alita-validator is to enable users to focus more on business logic. The validation of API parameters is handed over to alita-validator to save the code of validation parameters.
+== Proposal ==
+Alita-validator is still young and not strong enough. I hope that more people can know it, develop and strengthen it by donating it to Apache.
+
+== Background ==
+In the past, when I was doing API development, there was always a lot of code to do parameter verification. Many of these codes were repetitive and boring.
+Although there is JSR 380 bean validation standard and there are many implementations, these implementations throw the failed message as an exception, and there is no corresponding code for the message.
+As an API, I want to tell the caller of the API the reason why the verification failed so that the corresponding processing can be done.
+For example, for the API based on HTTP, the parameters often come from the user's input. The UI can handle these error messages and let the user know in some way.
+
+== Rationale ==
+Alita-validator is developed in Java, which provides API parameter validation capability through annotations. Annotations can be used on method parameters or in attributes of Java beans.
+Through the combination of various verifier annotations, the verification of API parameters can be realized. For example, verify whether a string is email, and verify that a password meets the complexity requirements, etc.
+We expect more interesting features and use cases to emerge from the community ranging.
+
+== Current Status ==
+
+=== Meritocracy ===
+The intent of this proposal is to start building a diverse developer and user community around alita-validator following the ASF meritocracy model. 
+We plan to invite more people as committers if they are interested and contribute to this project.
+
+=== Community ===
+At present, alita-validator is mainly developed by me and my friends. We hope to expand the contributor base by donating to Apache.
+
+=== Core Developers ===
+At present, alita-validator is mainly developed by me and my friends.
+
+=== Aligment ===
+The ASF is the natural choice to host the alita-validator project as its goal of encouraging community-driven open source projects fits with our vision for alita-validator. 
+
+== Known Risks ==
+
+=== Orphaned products ===
+Alita-validator comes from the needs of my job, but I believe it's not just for me. I'll use and perfect it for the rest of my career. As long as I can work, it won't be orphaned.
+
+=== Inexperience with Open Source ===
+Open source brings great convenience to my work, and learning open source can improve my ability.
+So I think I should make my own contribution to open source.
+At present, I actively participate in the development of some open source projects, such as Alibaba, Nacos, Apache Dubbo and so on, and have learned some experiences from them. They are good learning objects for me.
+
+=== Homogenous Developers ===
+At present, alita-validator is mainly developed by me and my friends.We work on one common code base.
+
+=== Reliance on Salaried Developers ===
+My friend and I worked together to develop the alita-validator because of our interest and practicality, but we didn't get paid for it.
+We didn't develop the alita-validator for the company, although we used it in our work.
+
+=== Relationships with Other Apache Products ===
+The development of alita-validator uses some Apache commons products, such as maven, commons collections, commons-lang3, etc.
+
+=== A Excessive Fascination with the Apache Brand ===
+While we respect the reputation of the Apache brand and have no doubt that it will attract new contributors 
+and users, our interest is primarily to give alita-validator a solid home as an open source project 
+following an established development model. 
+More reasons are provided in the Rationale and Alignment sections.
+
+== Documentation ==
+Information about alita-validator can be found at https://github.com/KeRan213539/alita-validator.
+At present, there are only Chinese documents. We will supplement them as soon as possible.
+
+== Initial Source ==
+Alita-validator was initially developed with open-sourced.
+It is currently hosted on Github.com under an Apache license 2.0 at https://github.com/KeRan213539/alita-validator.
+
+== Source and Intellectual Property Submission Plan ==
+As soon as alita-validator is approved to join Apache Incubator, ran ke will provide
+the Software Grant Agreement(SGA)
+ and initial committers will submit ICLA(s).
+The code is already licensed under the Apache Software License, version 2.0.
+
+
+== External Dependencies ==
+Alita-validator has the following external dependencies.As all dependencies are managed using Apache Maven.
+
+* JDK 1.8+
+* Apache Maven
+* JUnit
+* Slf4j
+* Apache Commons
+* Spring-context
+* Spring-boot
+* Fastjson
+* Lombok
+* Aspectjrt
+
+== Required Resources ==
+
+=== Mailing Lists ===
+* alita-validator-private (PMC discussion)
+* alita-validator-dev (developer discussion)
+* alita-validator-commits (SCM commits)
+* alita-validator-issues (JIRA issue feed) 
+
+### Subversion Directory
+* Git is the preferred source control system. 
+
+=== Issue Tracking ===
+The community would like to continue using GitHub Issues.
+
+### Other Resources
+The existing source code already has unit tests so we will make use of existing Apache continuous testing infrastructure. The resulting load should not be very large.
+
+== Initial Committers ==
+* Ran Ke(213539 at qq dot com)
+* Lei Zhang(freedom801213 at gmail dot com)
+* Ping Xu(xu6465 at qq dot com)
+
+## Affiliations
+The initial committers are friends.
+
+## Sponsors
+
+### Champion
+
+### Nominated Mentors
+
+### Sponsoring Entity
+We are requesting the Incubator to sponsor this project.
