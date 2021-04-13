@@ -27,10 +27,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author xp
- * @ClassName: DateRangeImpl
- * @Description: 日期格式/时间范围验证器，支持Date/LocalDate/LocalDateTime
- * @date 2019/11/19 9:18
+ * 日期格式/时间范围验证器，支持Date/LocalDate/LocalDateTime
+ * 2019/11/19 9:18
  */
 @ValidatorImpl(validator = DateRange.class)
 public class DateRangeImpl implements IAnnotationsValidator {
@@ -49,9 +47,8 @@ public class DateRangeImpl implements IAnnotationsValidator {
     }
     
     /**
-     * @author xp
-     * @Description: 判断日期是否在范围内，以当前日期为参照往前多少天，往后多少天<BR/>支持Date,LocalDate,LocalDateTime
-     * @Date 2019/11/19 14:12
+     * 判断日期是否在范围内，以当前日期为参照往前多少天，往后多少天<BR/>支持Date,LocalDate,LocalDateTime
+     * 2019/11/19 14:12
      * @param: object (Date|LocalDate|LocalDateTime)
      * @param: before
      * @param: after
@@ -84,9 +81,8 @@ public class DateRangeImpl implements IAnnotationsValidator {
     }
     
     /**
-     * @author xp
-     * @Description: 判断日期是否在指定日期范围之内
-     * @Date 2019/11/19 10:12
+     * 判断日期是否在指定日期范围之内
+     * 2019/11/19 10:12
      * @param: date
      * @param: beginDate
      * @param: endDate
@@ -103,9 +99,8 @@ public class DateRangeImpl implements IAnnotationsValidator {
     }
     
     /**
-     * @author xp
-     * @Description: 判断LocalDate是否在指定日期范围之内
-     * @Date 2019/11/19 10:32
+     * 判断LocalDate是否在指定日期范围之内
+     * 2019/11/19 10:32
      * @param: date
      * @param: beginDate
      * @param: endDate
@@ -122,9 +117,8 @@ public class DateRangeImpl implements IAnnotationsValidator {
     }
     
     /**
-     * @author xp
-     * @Description: 判断LocalDateTime是否在指定日期范围之内
-     * @Date 2019/11/19 10:50
+     * 判断LocalDateTime是否在指定日期范围之内
+     * 2019/11/19 10:50
      * @param: targetDate
      * @param: beginDate
      * @param: endDate

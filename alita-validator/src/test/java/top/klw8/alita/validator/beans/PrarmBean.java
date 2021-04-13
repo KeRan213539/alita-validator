@@ -28,10 +28,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * @author klw
- * @ClassName: PrarmBean
- * @Description: 测试用实体, 用做参数
- * @date 2019/6/12 17:17
+ * 测试用实体, 用做参数
+ * 2019/6/12 17:17
  */
 @Getter
 @Setter

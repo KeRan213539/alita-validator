@@ -18,10 +18,8 @@ package top.klw8.alita.validator.utils;
 import java.util.*;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: TrimStringUtil
- * @Description:  自动去除字符串的前后空格,如果被注解的是集合(目前支持 Collection, Map, 字符串数组)
- * @date 2019/12/10 9:51
+ *  自动去除字符串的前后空格,如果被注解的是集合(目前支持 Collection, Map, 字符串数组)
+ * 2019/12/10 9:51
  */
 public class TrimStringUtil {
 

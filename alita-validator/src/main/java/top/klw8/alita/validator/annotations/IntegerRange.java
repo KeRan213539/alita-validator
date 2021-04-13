@@ -27,10 +27,8 @@ import org.springframework.core.annotation.AliasFor;
 import top.klw8.alita.validator.ThisIsValidator;
 
 /**
- * @ClassName: IntegerRange
- * @Description: 验证int参数是否在指定范围
- * @author klw
- * @date 2019年1月26日 下午12:34:44
+ * 验证int参数是否在指定范围
+ * 2019年1月26日 下午12:34:44
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
@@ -40,15 +38,13 @@ import top.klw8.alita.validator.ThisIsValidator;
 public @interface IntegerRange {
 
     /**
-     * @Title: responseStatusCode
-     * @Description: 验证失败(不通过)的code
+     * 验证失败(不通过)的code
      * @return
      */
     String responseStatusCode() default "500";
     
     /**
-     * @Title: validatFailMessage
-     * @Description: 验证失败(不通过)的文字消息,可为空,默认使用ResponseStatusCodeEnum对应的消息
+     * 验证失败(不通过)的文字消息,可为空,默认使用ResponseStatusCodeEnum对应的消息
      * @return
      */
     String validatFailMessage();

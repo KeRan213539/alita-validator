@@ -20,10 +20,8 @@ import top.klw8.alita.validator.ThisIsValidator;
 import java.lang.annotation.*;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: GroupNotEmptys
- * @Description: GroupNotEmpty 的重复容器
- * @date 2019/11/5 17:18
+ * GroupNotEmpty 的重复容器
+ * 2019/11/5 17:18
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

@@ -31,10 +31,8 @@ import top.klw8.alita.validator.utils.GroupUtil;
 import top.klw8.alita.validator.utils.PasswordCheckUtil;
 
 /**
- * @author klw
- * @ClassName: PasswordImpl
- * @Description: 用户密码验证器实现
- * @date 2019年1月30日 下午6:18:13
+ * 用户密码验证器实现
+ * 2019年1月30日 下午6:18:13
  */
 @ValidatorImpl(validator = {PasswordGroup.class, Password.class})
 @Slf4j

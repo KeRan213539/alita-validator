@@ -29,10 +29,8 @@ import top.klw8.alita.validator.annotations.LongRange;
 import top.klw8.alita.validator.utils.ValidateUtil;
 
 /**
- * @ClassName: NumberRangeImpl
- * @Description: 数字范围验证器实现
- * @author klw
- * @date 2019年1月26日 下午2:35:51
+ * 数字范围验证器实现
+ * 2019年1月26日 下午2:35:51
  */
 @ValidatorImpl(validator = {DoubleRange.class, FloatRange.class, IntegerRange.class, LongRange.class, GeoLongitude.class, GeoLatitude.class})
 public class NumberRangeImpl implements IAnnotationsValidator {

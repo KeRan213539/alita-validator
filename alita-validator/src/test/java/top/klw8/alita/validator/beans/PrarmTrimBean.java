@@ -23,10 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: PrarmTrimBean
- * @Description: 测试 Trim
- * @date 2019/12/9 18:27
+ * 测试 Trim
+ * 2019/12/9 18:27
  */
 @Getter
 @Setter

@@ -25,10 +25,8 @@ import top.klw8.alita.validator.utils.ValidateUtil;
 
 
 /**
- * @ClassName: MobilePhoneNumberImpl
- * @Description: 验证手机号格式
- * @author klw
- * @date 2018-11-22 16:58:22
+ * 验证手机号格式
+ * 2018-11-22 16:58:22
  */
 @ValidatorImpl(validator = MobilePhoneNumber.class)
 public class MobilePhoneNumberImpl implements IAnnotationsValidator {

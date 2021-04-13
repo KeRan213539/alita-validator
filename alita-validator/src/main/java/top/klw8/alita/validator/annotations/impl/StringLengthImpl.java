@@ -16,10 +16,8 @@
 package top.klw8.alita.validator.annotations.impl;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: StringLengthImpl
- * @Description: StringLength 验证器实现
- * @date 2020/2/8 16:23
+ * StringLength 验证器实现
+ * 2020/2/8 16:23
  */
 
 import top.klw8.alita.validator.IAnnotationsValidator;

@@ -24,10 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: GroupNotEmptyTestBean
- * @Description: GroupNotEmpty 测试
- * @date 2019/11/5 15:35
+ * GroupNotEmpty 测试
+ * 2019/11/5 15:35
  */
 @Getter
 @Setter

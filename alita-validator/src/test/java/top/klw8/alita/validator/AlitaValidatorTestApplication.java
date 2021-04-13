@@ -20,10 +20,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * @author klw
- * @ClassName: AlitaValidatorTestApplication
- * @Description: alita验证器测试
- * @date 2019/6/12 9:41
+ * alita验证器测试
+ * 2019/6/12 9:41
  */
 @SpringBootApplication
 @EnableValidator(responseMsgGenerator = TestResponse.class)

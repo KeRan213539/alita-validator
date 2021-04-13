@@ -17,10 +17,8 @@ package top.klw8.alita.validator;
 
 
 /**
- * @author klw
- * @ClassName: ValidatorException
- * @Description: 表单验证, 业务异常
- * @date 2018年9月17日 13:07:33
+ * 表单验证, 业务异常
+ * 2018年9月17日 13:07:33
  */
 public class ValidatorException extends RuntimeException {
 

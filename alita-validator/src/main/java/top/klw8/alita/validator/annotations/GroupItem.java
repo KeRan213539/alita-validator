@@ -18,10 +18,8 @@ package top.klw8.alita.validator.annotations;
 import java.lang.annotation.*;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: GroupItem
- * @Description: 分组元素,该注解不是验证器注解,需要配合 @GroupNotEmpty 或者其他分组类验证器使用,单独使用无效
- * @date 2019/11/5 14:42
+ * 分组元素,该注解不是验证器注解,需要配合 @GroupNotEmpty 或者其他分组类验证器使用,单独使用无效
+ * 2019/11/5 14:42
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
@@ -30,8 +28,7 @@ import java.lang.annotation.*;
 public @interface GroupItem {
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 分组名称
+     * 分组名称
      */
     String value() default "defaultGroup";
 

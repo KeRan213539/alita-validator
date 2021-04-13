@@ -35,10 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: GroupNotEmptyImpl
- * @Description: GroupNotEmpty 验证器实现
- * @date 2019/11/5 14:47
+ * GroupNotEmpty 验证器实现
+ * 2019/11/5 14:47
  */
 @ValidatorImpl(validator = {GroupNotEmptys.class, GroupNotEmpty.class})
 @Slf4j
@@ -90,8 +88,7 @@ public class GroupNotEmptyImpl implements IAnnotationsValidator {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检查是否不为空,不为空则返回 true, 为空返回false
+     * 检查是否不为空,不为空则返回 true, 为空返回false
      */
     private boolean checkIsNotEmpty(Object object){
         if(object != null) {

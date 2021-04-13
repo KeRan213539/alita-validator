@@ -18,10 +18,8 @@ package top.klw8.alita.validator.utils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: PasswordCheckUtil
- * @Description: 密码检测工具类
- * @date 2019/11/6 11:12
+ * 密码检测工具类
+ * 2019/11/6 11:12
  */
 public class PasswordCheckUtil {
 
@@ -45,9 +43,8 @@ public class PasswordCheckUtil {
     private static String SPECIAL_CHAR = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码长度是否符合要求
-     * @Date 2019/11/6 11:13
+     * 检测密码长度是否符合要求
+     * 2019/11/6 11:13
      * @param: password
      * @param: minLength  最小长度
      * @param: maxLength  最大长度
@@ -62,9 +59,8 @@ public class PasswordCheckUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码是否是纯数字
-     * @Date 2019/11/6 14:09
+     * 检测密码是否是纯数字
+     * 2019/11/6 14:09
      * @param: spassword
      * @return boolean
      */
@@ -76,9 +72,8 @@ public class PasswordCheckUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码中是否包含数字
-     * @Date 2019/11/6 11:15
+     * 检测密码中是否包含数字
+     * 2019/11/6 11:15
      * @param: password
      * @return boolean
      */
@@ -99,9 +94,8 @@ public class PasswordCheckUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码中是否包含字母（不区分大小写）
-     * @Date 2019/11/6 11:16
+     * 检测密码中是否包含字母（不区分大小写）
+     * 2019/11/6 11:16
      * @param: password
      * @return boolean
      */
@@ -123,9 +117,8 @@ public class PasswordCheckUtil {
 
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码中是否包含小写字母
-     * @Date 2019/11/6 11:16
+     * 检测密码中是否包含小写字母
+     * 2019/11/6 11:16
      * @param: password
      * @return boolean
      */
@@ -147,9 +140,8 @@ public class PasswordCheckUtil {
 
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码中是否包含大写字母
-     * @Date 2019/11/6 11:17
+     * 检测密码中是否包含大写字母
+     * 2019/11/6 11:17
      * @param: password
      * @return boolean
      */
@@ -171,9 +163,8 @@ public class PasswordCheckUtil {
 
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 检测密码中是否包含特殊符号
-     * @Date 2019/11/6 11:17
+     * 检测密码中是否包含特殊符号
+     * 2019/11/6 11:17
      * @param: password
      * @return boolean
      */
@@ -196,9 +187,8 @@ public class PasswordCheckUtil {
 
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 是否包含键盘横向连续字符
-     * @Date 2019/11/6 11:17
+     * 是否包含键盘横向连续字符
+     * 2019/11/6 11:17
      * @param: password
      * @param: repetitions  连续个数
      * @param: isLower  是否区分大小写 true:区分大小写， false:不区分大小写
@@ -256,9 +246,8 @@ public class PasswordCheckUtil {
 
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 是否包含键盘纵向连续字符
-     * @Date 2019/11/6 11:20
+     * 是否包含键盘纵向连续字符
+     * 2019/11/6 11:20
      * @param: password
      * @param: repetitions  连续个数
      * @param: isLower  是否区分大小写 true:区分大小写， false:不区分大小写
@@ -312,9 +301,8 @@ public class PasswordCheckUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 是否包含字母表连续字符
-     * @Date 2019/11/6 11:21
+     * 是否包含字母表连续字符
+     * 2019/11/6 11:21
      * @param: password
      * @param: repetitions  连续个数
      * @param: isLower  是否区分大小写 true:区分大小写， false:不区分大小写
@@ -356,9 +344,8 @@ public class PasswordCheckUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 是否包含连续相同字符, 如 aaa,qqq,!!!
-     * @Date 2019/11/6 11:23
+     * 是否包含连续相同字符, 如 aaa,qqq,!!!
+     * 2019/11/6 11:23
      * @param: password
      * @param: repetitions  连续次数
      * @return boolean

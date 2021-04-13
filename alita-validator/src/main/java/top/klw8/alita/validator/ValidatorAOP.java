@@ -43,10 +43,8 @@ import top.klw8.alita.validator.utils.TrimStringUtil;
 import top.klw8.alita.validator.utils.ValidatorUtil;
 
 /**
- * @author klw
- * @ClassName: ValidatorAOP
- * @Description: 处理验证器的切面
- * @date 2018年9月17日 下午4:46:03
+ * 处理验证器的切面
+ * 2018年9月17日 下午4:46:03
  */
 @Aspect
 @Slf4j
@@ -55,8 +53,7 @@ public class ValidatorAOP {
     private static Logger logger = LoggerFactory.getLogger(ValidatorAOP.class);
 
     /**
-     * @author klw
-     * @Fields validatorImplsMap : 验证器注解对应的实现的缓存
+     * validatorImplsMap : 验证器注解对应的实现的缓存
      */
     private volatile static Map<String, Class<? extends IAnnotationsValidator>> validatorImplsCacheMap = null;
 
@@ -149,9 +146,8 @@ public class ValidatorAOP {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 处理方法参数中的属性
-     * @Date 2020/2/10 12:48
+     * 处理方法参数中的属性
+     * 2020/2/10 12:48
      * @param: arg
      * @return void
      */
@@ -197,9 +193,8 @@ public class ValidatorAOP {
     }
 
     /**
-     * @author klw
-     * @Description: 检查是否有验证器注解,有就执行验证
-     * @Date 2019/6/12 16:01
+     * 检查是否有验证器注解,有就执行验证
+     * 2019/6/12 16:01
      * @Param annotations 方法参数,类属性的注解
      * @Param fieldValue 方法参数,类属性的值
      * @return Object 验证不通过的自定义响应
@@ -241,8 +236,7 @@ public class ValidatorAOP {
      * @param fieldList
      * @param classz
      * @return
-     * @Title: getAllFields
-     * @Description: 递归获取该类的所有属性包括父类的爷爷类的...祖宗类的
+     * 递归获取该类的所有属性包括父类的爷爷类的...祖宗类的
      */
     private List<Field> getAllFields(List<Field> fieldList, Class<?> classz) {
         if (classz == null) {

@@ -40,10 +40,8 @@ import top.klw8.alita.validator.ValidatorImpl;
 
 
 /**
- * @author klw
- * @ClassName: EnableValidatorSelector
- * @Description: 将处理验证器的切面注入到spring中
- * @date 2018年9月17日 下午4:41:28
+ * 将处理验证器的切面注入到spring中
+ * 2018年9月17日 下午4:41:28
  */
 public class EnableValidatorSelector implements ImportSelector, ResourceLoaderAware, EnvironmentAware {
 

@@ -26,10 +26,8 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 
 /**
- * @ClassName: EnableValidator
- * @Description: 开启省验证器
- * @author klw
- * @date 2018年9月17日 13:07:19
+ * 开启省验证器
+ * 2018年9月17日 13:07:19
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

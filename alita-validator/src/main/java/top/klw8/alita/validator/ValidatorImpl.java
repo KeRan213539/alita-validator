@@ -23,10 +23,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName: ValidatorImpl
- * @Description: 用于标注验证器的实现
- * @author klw
- * @date 2018年12月13日 下午4:23:52
+ * 用于标注验证器的实现
+ * 2018年12月13日 下午4:23:52
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
@@ -34,9 +32,7 @@ import java.lang.annotation.Target;
 public @interface ValidatorImpl {
 
     /**
-     * @Title: validator
-     * @author klw
-     * @Description: 标注该实现对应的验证器注解
+     * 标注该实现对应的验证器注解
      * @return
      */
     Class<? extends Annotation>[] validator();

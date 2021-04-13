@@ -25,17 +25,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: GroupUtil
- * @Description: 分组工具
- * @date 2019/11/5 15:39
+ * 分组工具
+ * 2019/11/5 15:39
  */
 public class GroupUtil {
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 获取指定 classz 中标注了@GroupItem 的全部字段
-     * @Date 2019/11/6 9:55
+     * 获取指定 classz 中标注了@GroupItem 的全部字段
+     * 2019/11/6 9:55
      * @param: classz
      * @return java.util.List<java.lang.reflect.Field>
      */
@@ -44,9 +41,8 @@ public class GroupUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 获取指定 classz 中标注了@PasswordGroupItem 的全部字段
-     * @Date 2019/11/6 10:18
+     * 获取指定 classz 中标注了@PasswordGroupItem 的全部字段
+     * 2019/11/6 10:18
      * @param: classz
      * @return java.util.List<java.lang.reflect.Field>
      */
@@ -55,9 +51,8 @@ public class GroupUtil {
     }
 
     /**
-     * @author klw(213539@qq.com)
-     * @Description: 获取指定 classz 中标注了指定注解的全部字段
-     * @Date 2019/11/6 9:56
+     * 获取指定 classz 中标注了指定注解的全部字段
+     * 2019/11/6 9:56
      * @param: classz
      * @param: annotation
      * @return java.util.List<java.lang.reflect.Field>

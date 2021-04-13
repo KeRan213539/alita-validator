@@ -16,10 +16,8 @@
 package top.klw8.alita.validator.annotations.impl;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: MultiFieldRequiredImpl
- * @Description: 多属性必传验证器实现
- * @date 2020/1/6 8:39
+ * 多属性必传验证器实现
+ * 2020/1/6 8:39
  */
 
 import lombok.extern.slf4j.Slf4j;

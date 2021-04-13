@@ -25,10 +25,8 @@ import top.klw8.alita.validator.beans.PrarmTrimBean;
 import top.klw8.alita.validator.beans.TestBean;
 
 /**
- * @author klw
- * @ClassName: TestValidator
- * @Description: 测试验证器
- * @date 2019/6/12 9:49
+ * 测试验证器
+ * 2019/6/12 9:49
  */
 @Component
 public class TestValidatorService {

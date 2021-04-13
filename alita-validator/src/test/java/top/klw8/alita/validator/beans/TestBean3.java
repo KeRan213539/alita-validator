@@ -21,10 +21,8 @@ import top.klw8.alita.validator.annotations.Required;
 import top.klw8.alita.validator.annotations.StringLength;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: TestBean3
- * @Description: TestBean3
- * @date 2020/2/10 13:33
+ * TestBean3
+ * 2020/2/10 13:33
  */
 @Getter
 @Setter

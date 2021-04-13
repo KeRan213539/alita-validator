@@ -24,10 +24,8 @@ import top.klw8.alita.validator.utils.ValidatorUtil;
 import java.lang.annotation.Annotation;
 
 /**
- * @author klw(213539 @ qq.com)
- * @ClassName: HttpUrlImpl
- * @Description: HttpUrl验证器实现
- * @date 2020/1/6 17:10
+ * HttpUrl验证器实现
+ * 2020/1/6 17:10
  */
 @ValidatorImpl(validator = HttpUrl.class)
 public class HttpUrlImpl implements IAnnotationsValidator {

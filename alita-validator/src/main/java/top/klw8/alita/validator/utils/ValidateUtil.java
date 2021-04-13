@@ -21,10 +21,8 @@ import java.text.SimpleDateFormat;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author klw
- * @ClassName: ValidateUtil
- * @Description: 一些常用效验
- * @date 2018-11-22 09:48:57
+ * 一些常用效验
+ * 2018-11-22 09:48:57
  */
 public class ValidateUtil {
 
@@ -32,8 +30,7 @@ public class ValidateUtil {
      * @param str
      * @param regex
      * @return
-     * @Title: checkStrByRegex
-     * @Description: 根据正则表达式效验字符串
+     * 根据正则表达式效验字符串
      */
     public static boolean checkStrByRegex(String str, String regex) {
         return str.matches(regex);
@@ -42,8 +39,7 @@ public class ValidateUtil {
     /**
      * @param ip
      * @return
-     * @Title: checkIpFormatting
-     * @Description: 检查IP格式是否正确
+     * 检查IP格式是否正确
      */
     public static boolean checkIpFormatting(String ip) {
         String regex = "(2[5][0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})\\.(25[0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})\\.(25[0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})\\.(25[0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})";
@@ -54,8 +50,7 @@ public class ValidateUtil {
      * @param dateStr
      * @param formatStr
      * @return
-     * @Title: checkDateFormatting
-     * @Description: 检查传入的字符串是否是指定的日期格式
+     * 检查传入的字符串是否是指定的日期格式
      */
     public static boolean checkDateFormatting(String dateStr, String formatStr) {
         DateFormat formatter = new SimpleDateFormat(formatStr);
@@ -70,8 +65,7 @@ public class ValidateUtil {
     /**
      * @param lng
      * @param lat
-     * @Title: checkLngLatRange
-     * @Description: 检查经纬度值是否在经纬度范围内(经度 : - 90 ~ 90, 纬度 : - 180 ~ 180)
+     * 检查经纬度值是否在经纬度范围内(经度 : - 90 ~ 90, 纬度 : - 180 ~ 180)
      */
     public static boolean checkLatLngRange(Double lat, Double lng) {
         if (lat == null || lng == null) {
@@ -86,9 +80,7 @@ public class ValidateUtil {
     /**
      * @param lng
      * @return
-     * @Title: checkLongitudeRange
-     * @author klw
-     * @Description: 检查经度范围
+     * 检查经度范围
      */
     public static boolean checkLongitudeRange(Double lng) {
         if (lng == null) {
@@ -103,9 +95,7 @@ public class ValidateUtil {
     /**
      * @param lat
      * @return
-     * @Title: checkLatitudeRange
-     * @author klw
-     * @Description: 检查纬度范围
+     * 检查纬度范围
      */
     public static boolean checkLatitudeRange(Double lat) {
         if (lat == null) {
@@ -121,8 +111,7 @@ public class ValidateUtil {
     /**
      * @param mobileNo
      * @return
-     * @Title: isMobileNO
-     * @Description: 验证手机号格式是否正确
+     * 验证手机号格式是否正确
      */
     public static boolean isMobileNO(String mobileNo) {
         String telRegex = "^1[345789]\\d{9}$";
@@ -132,8 +121,7 @@ public class ValidateUtil {
     /**
      * @param idCardNo
      * @return
-     * @Title: isChinaIdCardNo
-     * @Description: 检查是否是身份证号
+     * 检查是否是身份证号
      */
     public static boolean isChinaIdCardNo(String idCardNo) {
         String idCardRegex = "(^\\d{15}$)|(^\\d{17}([0-9]|X)$)";
@@ -144,8 +132,7 @@ public class ValidateUtil {
      * @param str
      * @param regx
      * @return
-     * @Title: checkStringByRegx
-     * @Description: 根据正则表达式验证字符串
+     * 根据正则表达式验证字符串
      */
     private static boolean checkStringByRegx(String str, String regx) {
         if (StringUtils.isBlank(str)) {
@@ -157,8 +144,7 @@ public class ValidateUtil {
     /**
      * @param dateStr
      * @return
-     * @Title: checkDateFormatting
-     * @Description: 检查日期格式是否是 yyyyMMddHHmmss
+     * 检查日期格式是否是 yyyyMMddHHmmss
      */
     public static boolean checkDateFormatting_yyyyMMddHHmmss(String dateStr) {
         try {

@@ -40,9 +40,7 @@ import java.util.Map;
 /**
  * JUnit测试类.
  *
- * @author klw(213539 @ qq.com)
- * @ClassName: AlitaValidatorTestJUnit
- * @date 2020/9/16 10:26
+ * 2020/9/16 10:26
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
